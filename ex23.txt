@@ -1,0 +1,37 @@
+# Source: https://github.com/pandas-dev/pandas/blob/master/scripts/boxplot_test.py
+
+# We think this imports the module "matplotlib.pyplot" and saves it as "plt," 
+import matplotlib.pyplot as plt
+
+# we think this imports a module called random 
+import random
+
+# imports another module "pandas.util.testing" and saves as tm
+import pandas.util.testing as tm
+
+# takes the object "tm" and "." specifies the a function.. in this case "N"(aka sample size = 1000)
+tm.N = 1000
+
+# makes a data frame for out object "tm", titled "df"(short for dataframe)
+df = tm.makeTimeDataFrame()
+
+# imports a module "string"
+import string
+
+# take the "string" module and applies "letters" to it, and lists the first 5 letters from the first 200 lines? and saves into variable "foo"
+foo = list(string.letters[:5]) * 200
+
+# doing the same thing and saving into a variable called "indic"
+df['indic'] = list(string.letters[:5]) * 200
+
+# shuffles the object "foo" and puts in different order
+random.shuffle(foo)
+
+# saves the shuffled object in a new variable "indic2" within dataframe "df"
+df['indic2'] = foo
+
+# creates side-by-side boxplots for 2 variables in the data frame "df" and rotates them 90 degrees to read horizontally? (default boxplot is vertical).  font size = 8
+df.boxplot(by=['indic', 'indic2'], fontsize=8, rot=90)
+
+# Refers back to the object created in the beginning "plt", and displays the boxplots
+plt.show()
